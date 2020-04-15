@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  jekyll:
+    image: "jekyll/jekyll:builder"
+    ports:
+      - "35729:35729"
+      - "4000:4000"
+    volumes:
+      - ./:/srv/jekyll
+      - /srv/jekyll/_tests/ # Does not include the _tests folder
+    environment:
+      "JEKYLL_ENV": "development"
+    command:
+      - jekyll
+      - serve
+      - -b
+      - /lowpoly
+      - -l
